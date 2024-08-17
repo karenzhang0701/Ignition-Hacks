@@ -10,5 +10,10 @@
   "permissions": [
     "scripting",
     "http://localhost:3000/api/hello"
-  ]
+  ],
+  "icons": {
+    "16": "/icon.png",
+    "48": "/icon.png",
+    "128": "/icon.png"
+  }
 }
