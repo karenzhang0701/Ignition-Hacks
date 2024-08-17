@@ -9,6 +9,6 @@
   },
   "permissions": [
     "scripting",
-    "http://localhost:3000/api/hello"
+    "https://chrome-lane-432805-n2.ue.r.appspot.com/api/hello"
   ]
 }
