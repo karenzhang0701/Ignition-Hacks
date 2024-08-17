@@ -1,3 +1,4 @@
+import sys
 import streamlit as st
 import newspaper
 import nltk

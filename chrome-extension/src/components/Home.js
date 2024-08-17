@@ -8,11 +8,19 @@ function Home() {
     try {
       const url = await getCurrentTabUrl();
       console.log("Current Tab URL:", url);
-      const response = await fetch(
-        "https://chrome-lane-432805-n2.ue.r.appspot.com/api/hello"
-      );
+
+      const response = await fetch("http://localhost:3000/api/hello", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ url: url }),
+      });
+
       const data = await response.json();
       console.log(data); // Handle the response data
+
+      const summaryString = data.output; //Summary stored here
     } catch (error) {
       console.error("Error:", error); // Handle errors
     }

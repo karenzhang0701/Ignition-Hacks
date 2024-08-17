@@ -1,0 +1,6 @@
+streamlit
+newspaper
+nltk
+sumy.parsers.plaintext
+sumy.nlp.tokenizers
+sumy.summarizers.lsa
