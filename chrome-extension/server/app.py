@@ -19,9 +19,15 @@ text = article.text
 # print (text)
 
 # summarizer
+num_sentences = st.slider("Number of sentences in the summary", 1, 20)
 parser = PlaintextParser.from_string(text, Tokenizer("english"))
 summarizer = LsaSummarizer()
-summary = summarizer(parser.document, 10)
+summary = summarizer(parser.document, num_sentences)
+
+st.title("Article Summary")
+st.subheader("Authors: " + ", ".join(authors))
+
+st.subheader("Summary:")
 
 for sentence in summary:
-    print(sentence)
+    st.write(sentence)
