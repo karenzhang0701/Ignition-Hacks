@@ -2,6 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function MainPage() {
+  const handleClick = () => {
+    window.open('https://ignition-hacks-jjqg.vercel.app/#/summary', '_blank');
+  }
+
   return (
     <div className="bg-gradient flex flex-col items-center justify-center h-screen">
       <h1
@@ -10,14 +14,11 @@ function MainPage() {
       >
         [Title]
       </h1>
-      {/* link to new tab that contains article summary, political leaning, author background, etc. */}
-      <button className="button" style={{ marginTop: "30px" }}>
+      
+      <button className="button" style={{ marginTop: '30px' }} onClick={handleClick}>
         View Summary
       </button>
-      {/* link to new tab that shows sentiment analysis  */}
-      <button className="button" style={{ marginTop: "30px" }}>
-        View Sentiment Analysis
-      </button>
+      
     </div>
   );
 }
