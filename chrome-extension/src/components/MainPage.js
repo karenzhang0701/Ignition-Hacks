@@ -11,9 +11,11 @@ function MainPage() {
       >
         [Title]
       </h1>
+      <Link to="/summary">
       <button className="button" style={{ marginTop: '30px' }}>
         View Summary
       </button>
+      </Link>
     </div>
   );
 }
