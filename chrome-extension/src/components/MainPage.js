@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function MainPage() {
-  const summaryNewTab = () => {
-    window.open("http://localhost:8501", "_blank");
+  const openSummaryPage = () => {
+    window.open("https://ignition-neoio9g6j-karen-zhangs-projects.vercel.app/", "_blank"); // Replace with your actual URL
   };
 
   return (
@@ -14,13 +14,8 @@ function MainPage() {
       >
         [Title]
       </h1>
-      {/* link to new tab that contains article summary, political leaning, author background, etc. */}
-      <button className="button" style={{ marginTop: "30px" }} onClick={summaryNewTab}>
+      <button className="button" style={{ marginTop: '30px' }} onClick={openSummaryPage}>
         View Summary
-      </button>
-      {/* link to new tab that shows sentiment analysis  */}
-      <button className="button" style={{ marginTop: "30px" }}>
-        View Sentiment Analysis
       </button>
     </div>
   );
