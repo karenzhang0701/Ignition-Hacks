@@ -15,6 +15,29 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
+.page-bg {
+  background-color: antiquewhite;
+  background-size: cover;
+  background-position: center;
+  height: 100vh; /* Make sure the div covers the full viewport height */
+  width: 100vw; /* Optional: Make sure the div covers the full viewport width */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 50%; /* Increase width */
+  height: 15px; /* Increase height */
+  background: #b8bdef;
+  border-radius: 10px; /* Increase border radius for a more rounded look */
+  outline: none;
+  opacity: 0.9;
+  transition: opacity .2s;
+  margin-top: 20px; /* Space above the slider */
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -24,6 +47,22 @@ code {
   background-image: url('./assets/bg.gif');
   background-size: cover;
   background-position: center;
+  height: 100vh; /* Make sure the div covers the full viewport height */
+  width: 100vw; /* Optional: Make sure the div covers the full viewport width */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bg-2 {
+  background-image: url('./assets/bg2.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh; /* Make sure the div covers the full viewport height */
+  width: 100vw; /* Optional: Make sure the div covers the full viewport width */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .button {
@@ -41,3 +80,20 @@ code {
   background-color: rgb(167, 135, 214);
   color: white;
 }
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: var(--thumb-color, #888); /* Default color is #888 */
+  cursor: pointer;
+}
+
+.side-by-side {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+}
+

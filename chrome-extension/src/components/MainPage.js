@@ -2,6 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function MainPage() {
+  const handleClick = () => {
+    window.open('https://ignition-hacks-jjqg.vercel.app/#/summary', '_blank');
+  }
 
   return (
     <div className="bg-gradient flex flex-col items-center justify-center h-screen">
@@ -11,11 +14,11 @@ function MainPage() {
       >
         [Title]
       </h1>
-      <Link to="/summary">
-      <button className="button" style={{ marginTop: '30px' }}>
+      
+      <button className="button" style={{ marginTop: '30px' }} onClick={handleClick}>
         View Summary
       </button>
-      </Link>
+      
     </div>
   );
 }
