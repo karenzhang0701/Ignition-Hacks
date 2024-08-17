@@ -6,16 +6,31 @@ function Home() {
   // Function to handle the button click and make a request to the Express server
   const handleRequest = async () => {
     try {
-      // Replace with your actual server URL
+      const url = await getCurrentTabUrl();
+      console.log("Current Tab URL:", url);
       const response = await fetch(
         "https://chrome-lane-432805-n2.ue.r.appspot.com/api/hello"
-      ); // Update this URL
+      );
       const data = await response.json();
       console.log(data); // Handle the response data
     } catch (error) {
       console.error("Error:", error); // Handle errors
     }
   };
+
+  async function getCurrentTabUrl() {
+    return new Promise((resolve, reject) => {
+      let queryOptions = { active: true, lastFocusedWindow: true };
+      chrome.tabs.query(queryOptions, (tabs) => {
+        let tab = tabs[0];
+        if (tab) {
+          resolve(tab.url);
+        } else {
+          reject("No active tab found");
+        }
+      });
+    });
+  }
 
   return (
     <div>
