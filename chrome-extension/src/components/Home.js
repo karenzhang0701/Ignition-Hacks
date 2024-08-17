@@ -7,7 +7,9 @@ function Home() {
   const handleRequest = async () => {
     try {
       // Replace with your actual server URL
-      const response = await fetch("http://localhost:3000/api/hello"); // Update this URL
+      const response = await fetch(
+        "https://chrome-lane-432805-n2.ue.r.appspot.com/api/hello"
+      ); // Update this URL
       const data = await response.json();
       console.log(data); // Handle the response data
     } catch (error) {
