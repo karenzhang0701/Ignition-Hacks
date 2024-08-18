@@ -1,6 +1,1 @@
-streamlit
 newspaper3k
-nltk
-sumy.parsers.plaintext
-sumy.nlp.tokenizers
-sumy.summarizers.lsa
