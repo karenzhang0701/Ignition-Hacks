@@ -10,8 +10,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  min-width: 320px;
-  min-height: 350px;
+  min-width: 500px;
+  min-height: 600px;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -26,17 +26,15 @@ body {
   justify-content: center;
 }
 
+
 .slider {
-  -webkit-appearance: none;
-  width: 50%; /* Increase width */
-  height: 15px; /* Increase height */
-  background: #b8bdef;
-  border-radius: 10px; /* Increase border radius for a more rounded look */
-  outline: none;
-  opacity: 0.9;
-  transition: opacity .2s;
-  margin-top: 20px; /* Space above the slider */
+  -webkit-appearance: none; /* Remove default styling for WebKit browsers */
+  width: 100%; /* Full width of its container */
+  height: 15px; /* Height of the slider track */
+  background: #ffffff; /* Light gray background for the track */
+  border-radius: 10px; /* Rounded corners for the track */
 }
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -68,9 +66,9 @@ code {
 .button {
   background-color: white;
   color: black;
-  padding: 10px 20px;
-  border-radius: 10px;
-  font-size: 16px;
+  padding: 20px 50px; /* vertical horizontal */
+  border-radius: 16px; 
+  font-size: 18px; 
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
@@ -97,3 +95,54 @@ code {
   align-items: center;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 16px; /* Adjust padding as needed */
+  justify-content: flex-start;
+  overflow-y: auto;
+}
+
+.title {
+  font-size: 2rem; /* Equivalent to text-4xl */
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  margin-bottom: 30px;
+  align-items: center;
+  text-align: center;
+  padding-top: 30px;
+}
+
+.summary-container {
+  width: 100%;
+  max-width: 600px; /* Adjust max-width as needed */
+  padding: 15px;
+  font-size: 15px;
+  margin-bottom: 15px; /* Adjust margin as needed */
+  align-items: center;
+}
+
+@keyframes growShrink {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1); /* Adjust the scale value as needed */
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-grow-shrink {
+  animation: growShrink 3s infinite; /* Adjust duration as needed */
+}
+
+.description {
+  font-size: 15px;
+  margin-bottom: 15px;
+  align-items: center;
+}

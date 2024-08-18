@@ -25,7 +25,7 @@ function Home() {
 
       setSummaryString(data.output); //Summary stored here
       console.log("Summary Set:", data.output); // Debugging before navigating
-      navigate("/article-summary", {state: {summary: data.output}});
+      navigate("/summary", {state: {summary: data.output}});
     } catch (error) {
       console.error("Error:", error); // Handle errors
     }
@@ -51,13 +51,13 @@ function Home() {
         <div className="flex flex-col items-center">
           <img
             src={Logo}
-            className="mb-4 w-56 h-auto animate-scale-up-down"
+            className="mb-4 w-96 h-auto animate-grow-shrink"
             alt="Logo"
           />
-          <h1 className="text-4xl font-poppins text-white font-bold">
-            [Title]
+          <h1 className="text-6xl font-poppins text-white font-bold" style={{marginTop:'20px'}}>
+            NewSight
           </h1>
-          <Link to="/main-page">
+          <Link to="/summary">
             <button
               className="button"
               style={{ marginTop: "30px" }}

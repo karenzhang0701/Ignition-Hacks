@@ -13,7 +13,7 @@ text = sys.stdin.read()
 # summarizer
 parser = PlaintextParser.from_string(text, Tokenizer("english"))
 summarizer = LsaSummarizer()
-summary = summarizer(parser.document, 10)
+summary = summarizer(parser.document, 5)
 
 result = " ".join(str(sentence) for sentence in summary)
 # for sentence in summary:
