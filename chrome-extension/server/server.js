@@ -58,9 +58,9 @@ app.post("/api/hello", async (req, res) => {
 
     // Scrape text from the news article
     const { stdout: scraperOutput } = await execPromise(
-      `python "${scraperPath}" "${url}"`
+      `python3 "${scraperPath}" "${url}"`
     );
-    const text = scraperOutput.trim();
+    const text = scraperOutput.trim(); //stores article text
     console.log("Scraper output:", text);
 
     // Get the bias report

@@ -1,11 +1,11 @@
 import sys
-import newspaper
+from newspaper import Article
 import nltk
 # nltk.download('punkt')
 
 url = sys.argv[1]
 
-article = newspaper.Article(url)
+article = Article(url)
 article.download()
 
 article.parse()
