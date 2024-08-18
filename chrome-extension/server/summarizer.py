@@ -9,7 +9,6 @@ from sumy.summarizers.lsa import LsaSummarizer
 
 text = sys.stdin.read()
 
-
 # summarizer
 parser = PlaintextParser.from_string(text, Tokenizer("english"))
 summarizer = LsaSummarizer()
