@@ -24,6 +24,28 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "test", "test.html"));
 });
 
+// Function to run a python process using stdin
+// Used to run bias.py and summarizer.py
+function runPythonProcess(path, input) {
+  return new Promise((resolve, reject) => {
+    const pythonProcess = exec(`python "${path}"`);
+    pythonProcess.stdin.write(input);
+    pythonProcess.stdin.end();
+
+    let output = "";
+    pythonProcess.stdout.on("data", (data) => {
+      output += data;
+    });
+
+    pythonProcess.on("close", (code) => {
+      if (code !== 0) {
+        return reject(new Error(`Python script exited with code ${code}`));
+      }
+      resolve(output.trim());
+    });
+  });
+}
+
 app.post("/api/hello", async (req, res) => {
   const url = req.body.url;
   console.log("Received URL:", url);
@@ -32,39 +54,32 @@ app.post("/api/hello", async (req, res) => {
     // Path to python scripts
     const scraperPath = path.join(__dirname, "scraper.py");
     const summarizerPath = path.join(__dirname, "summarizer.py");
+    const biasPath = path.join(__dirname, "bias.py");
 
     // Scrape text from the news article
     const { stdout: scraperOutput } = await execPromise(
-      `python3 "${scraperPath}" "${url}"`
+      `python "${scraperPath}" "${url}"`
     );
-    const text = scraperOutput.trim(); //stores article text
+    const text = scraperOutput.trim().replace(/�/g, ""); //stores article text
     console.log("Scraper output:", text);
 
-    // Generate a summary of the scraped text using stdin
-    const summarizerProcess = exec(`python3 "${summarizerPath}"`);
-    summarizerProcess.stdin.write(text);
-    summarizerProcess.stdin.end();
+    // Get the bias report
+    const biasOutput = await runPythonProcess(biasPath, text);
+    console.log("Bias report:", biasOutput);
 
-    let summarizerOutput = "";
-    summarizerProcess.stdout.on("data", (data) => {
-      summarizerOutput += data;
-    });
+    // Get the summary
+    const summarizerOutput = await runPythonProcess(summarizerPath, text);
+    console.log("Summary:", summarizerOutput);
 
-    summarizerProcess.on("close", (code) => {
-      summarizerOutput = summarizerOutput.trim();
-      console.log("Summarizer output:", summarizerOutput);
-      
-
-      // Send the summary to the front end
-      //added text: text
-      res.json({
-        message: "URL received",
-        url: url,
-        output: {
-          text: text,
-          summary: summarizerOutput,
-        },
-      });
+    //Send data to front end
+    res.json({
+      message: "URL received",
+      url: url,
+      output: {
+        text: text,
+        summary: summarizerOutput,
+        biasReport: biasOutput,
+      },
     });
   } catch (error) {
     console.error("Error:", error);

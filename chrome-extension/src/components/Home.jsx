@@ -24,13 +24,36 @@ function Home() {
       const data = await response.json();
       console.log(data); // Handle the response data
 
-      console.log("Article Text: ", data.output.text); //testing
-      setTextString(data.output.text);
-      
+      const summaryString = data.output.summary; //Summary stored here
+      console.log("Summary:", summaryString);
 
-      setSummaryString(data.output.summary); //Summary stored here
-      console.log("Summary Set:", data.output.summary); // Debugging before navigating
-      navigate("/summary", {state: {summary: data.output.summary}});
+      const textString = data.output.text; //Full text stored here
+      console.log("Text:", textString);
+
+      setTextString(textString);
+      setSummaryString(summaryString); //Summary stored here
+      navigate("/summary", {state: {summary: summaryString}});
+
+      const pbo = JSON.parse(data.output.biasReport).slice(7,-3); //Bias report stored as a JSON object here
+      console.log("Bias Report:", pbo);
+      const pboArr = JSON.parse(pbo)
+
+      const topic1 = pboArr[0];
+      console.log(topic1.name)
+      const topic2 = pboArr[1];
+      const topic3 = pboArr[2];
+      const topic4 = pboArr[3];
+
+      // Navigate to the ArticleSummary page and pass the data
+      /*navigate("/summary", {
+        state: {
+          summary: summaryString,
+          topic1: topic1,
+          topic2: topic2,
+          topic3: topic3,
+          topic4: topic4
+        }
+      });*/
     } catch (error) {
       console.error("Error:", error); // Handle errors
     }
