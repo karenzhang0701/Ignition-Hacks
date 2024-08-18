@@ -4,8 +4,9 @@ import { useLocation } from 'react-router-dom';
 import Slider from './Slider.jsx'
 
 
-function ArticleSummary() {
+const ArticleSummary = () => {
     const location = useLocation();
+    const pbo = location.state?.pbo || {};
     const summary = location.state?.summary //access passed state
     console.log("Received Summary:", summary);
 
@@ -18,12 +19,21 @@ function ArticleSummary() {
             {/* render summary */}
             <div className="summary-container">{summary}</div>
 
-            <Slider
+            {/* <Slider
                 title={"Hi"}
                 value={9}
-                explanation={"Hello"} />
+                explanation={"Hello"} /> */}
+
+            {Object.values(pbo).map((item, index) => (
+                <Slider
+                    key={index}
+                    title={item.name}
+                    value={item.score}
+                    description={item.explanation}
+                />
+            ))}
         </div>
-    
+
     )
 }
 

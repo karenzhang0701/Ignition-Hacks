@@ -28,7 +28,7 @@ app.get("/", (req, res) => {
 // Used to run bias.py and summarizer.py
 function runPythonProcess(path, input) {
   return new Promise((resolve, reject) => {
-    const pythonProcess = exec(`python "${path}"`);
+    const pythonProcess = exec(`python3 "${path}"`);
     pythonProcess.stdin.write(input);
     pythonProcess.stdin.end();
 
@@ -53,8 +53,8 @@ app.post("/api/hello", async (req, res) => {
   try {
     // Path to python scripts
     const scraperPath = path.join(__dirname, "scraper.py");
-    const summarizerPath = path.join(__dirname, "summarizer.py");
     const biasPath = path.join(__dirname, "bias.py");
+    const summarizerPath = path.join(__dirname, "summarizer.py");
 
     // Scrape text from the news article
     const { stdout: scraperOutput } = await execPromise(
