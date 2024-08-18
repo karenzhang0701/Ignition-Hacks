@@ -15,9 +15,11 @@ function MainPage() {
         [Title]
       </h1>
       
+      {/* <Link to="/summary"> */}
       <button className="button" style={{ marginTop: '30px' }} onClick={handleClick}>
         View Summary
       </button>
+      {/* </Link> */}
       
     </div>
   );

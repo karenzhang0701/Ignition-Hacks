@@ -6,8 +6,6 @@ function Home() {
   const [summaryString, setSummaryString] = useState("");
   const navigate = useNavigate();
 
-
-  window.summaryString = "";
   // Function to handle the button click and make a request to the Express server
   const handleRequest = async () => {
     try {
@@ -26,6 +24,7 @@ function Home() {
       console.log(data); // Handle the response data
 
       setSummaryString(data.output); //Summary stored here
+      console.log("Summary Set:", data.output); // Debugging before navigating
       navigate("/article-summary", {state: {summary: data.output}});
     } catch (error) {
       console.error("Error:", error); // Handle errors

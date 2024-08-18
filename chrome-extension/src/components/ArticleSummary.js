@@ -12,6 +12,7 @@ function ArticleSummary() {
 
     const location = useLocation();
     const summary = location.state?.summary || "No summary available"; //access passed state
+    console.log("Received Summary:", summary);
 
     const [biasScore, setbiasScore] = useState(10);
 
