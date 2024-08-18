@@ -19,8 +19,8 @@ body {
   background-color: antiquewhite;
   background-size: cover;
   background-position: center;
-  height: 100vh; /* Make sure the div covers the full viewport height */
-  width: 100vw; /* Optional: Make sure the div covers the full viewport width */
+  height: 100vh; 
+  width: 100vw; 
   display: flex;
   align-items: center;
   justify-content: center;
@@ -28,11 +28,13 @@ body {
 
 
 .slider {
-  -webkit-appearance: none; /* Remove default styling for WebKit browsers */
-  width: 100%; /* Full width of its container */
-  height: 15px; /* Height of the slider track */
-  background: #ffffff; /* Light gray background for the track */
-  border-radius: 10px; /* Rounded corners for the track */
+  -webkit-appearance: none; 
+  width: 70%; 
+  height: 15px; 
+  background: #ffffff; 
+  border-radius: 10px; 
+  display: block;
+  margin: 0 auto;
 }
 
 
@@ -45,8 +47,8 @@ code {
   background-image: url('./assets/bg.gif');
   background-size: cover;
   background-position: center;
-  height: 100vh; /* Make sure the div covers the full viewport height */
-  width: 100vw; /* Optional: Make sure the div covers the full viewport width */
+  height: 100vh; 
+  width: 100vw; 
   display: flex;
   align-items: center;
   justify-content: center;
@@ -56,8 +58,8 @@ code {
   background-image: url('./assets/bg2.jpg');
   background-size: cover;
   background-position: center;
-  height: 100vh; /* Make sure the div covers the full viewport height */
-  width: 100vw; /* Optional: Make sure the div covers the full viewport width */
+  height: 100vh; 
+  width: 100vw; 
   display: flex;
   align-items: center;
   justify-content: center;
@@ -84,7 +86,7 @@ code {
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background: var(--thumb-color, #888); /* Default color is #888 */
+  background: var(--thumb-color, #888); 
   cursor: pointer;
 }
 
@@ -99,15 +101,15 @@ code {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100vh;
-  padding: 16px; /* Adjust padding as needed */
+  justify-content: flex-start; 
+  min-height: 100vh;
+  padding: 16px; 
   justify-content: flex-start;
   overflow-y: auto;
 }
 
 .title {
-  font-size: 2rem; /* Equivalent to text-4xl */
+  font-size: 2rem; 
   font-family: 'Poppins', sans-serif;
   font-weight: bold;
   margin-bottom: 30px;
@@ -118,10 +120,10 @@ code {
 
 .summary-container {
   width: 100%;
-  max-width: 600px; /* Adjust max-width as needed */
+  max-width: 600px; 
   padding: 15px;
   font-size: 15px;
-  margin-bottom: 15px; /* Adjust margin as needed */
+  margin-bottom: 15px;
   align-items: center;
 }
 
@@ -130,7 +132,7 @@ code {
     transform: scale(1);
   }
   50% {
-    transform: scale(1.1); /* Adjust the scale value as needed */
+    transform: scale(1.1);
   }
   100% {
     transform: scale(1);
@@ -138,7 +140,7 @@ code {
 }
 
 .animate-grow-shrink {
-  animation: growShrink 3s infinite; /* Adjust duration as needed */
+  animation: growShrink 3s infinite; 
 }
 
 .description {
