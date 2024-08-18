@@ -3,7 +3,7 @@ import newspaper
 import nltk
 # nltk.download('punkt')
 
-url = sys.argv[1]
+url = 'https://www.theglobeandmail.com/world/us-politics/article-will-fear-of-donald-trump-be-enough-to-send-kamala-harris-to-the-white/'
 
 article = newspaper.Article(url)
 article.download()

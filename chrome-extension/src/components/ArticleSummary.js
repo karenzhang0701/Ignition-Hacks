@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
-
+import { useLocation } from 'react-router-dom';
 
 
 function ArticleSummary() {
@@ -9,6 +9,9 @@ function ArticleSummary() {
     // const handleSliderChange = (event) => {
     //     setSentenceCount(event.target.value);
     // };
+
+    const location = useLocation();
+    const summary = location.state?.summary || "No summary available"; //access passed state
 
     const [biasScore, setbiasScore] = useState(10);
 
@@ -42,6 +45,8 @@ function ArticleSummary() {
             <h1 className="text-4xl font-poppins font-bold mb-4" style={{ marginBottom: '80px' }}>
                 Article Summary
             </h1>
+            {/* render summary */}
+            {summary}
 
             <h1 className="text-4xl font-poppins font-bold mb-4"> Biases Overview </h1>
             <input

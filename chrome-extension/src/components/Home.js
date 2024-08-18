@@ -1,8 +1,13 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, {useState} from "react";
+import {Link, useNavigate} from 'react-router-dom';
 import Logo from "../assets/news.png";
 
 function Home() {
+  const [summaryString, setSummaryString] = useState("");
+  const navigate = useNavigate();
+
+
+  window.summaryString = "";
   // Function to handle the button click and make a request to the Express server
   const handleRequest = async () => {
     try {
@@ -20,7 +25,8 @@ function Home() {
       const data = await response.json();
       console.log(data); // Handle the response data
 
-      const summaryString = data.output; //Summary stored here
+      setSummaryString(data.output); //Summary stored here
+      navigate("/article-summary", {state: {summary: data.output}});
     } catch (error) {
       console.error("Error:", error); // Handle errors
     }
