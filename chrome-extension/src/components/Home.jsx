@@ -47,17 +47,17 @@ function Home() {
       });
 
       const data = await response.json();
-      console.log(data); // Handle the response data
+      console.log(data); 
 
-      const pbo = JSON.parse(data.output.biasReport).slice(7,-3); //Bias report stored as a JSON object here
+      const pbo = JSON.parse(data.output.biasReport).slice(7,-3); //Bias report stored as a JSON string here
       console.log("Bias Report:", pbo);
-      const pboArr = JSON.parse(pbo);
+      const pboArr = JSON.parse(pbo); //Parse bias report data into an array
       const topic1 = pboArr[0];
       const topic2 = pboArr[1];
       const topic3 = pboArr[2];
       const topic4 = pboArr[3];
 
-      const pboObj = {
+      const pboObj = { //Store bias report data into a JavaScript object
         [topic1.name]: {
           "name": topic1.name,
           "score": topic1.score,
@@ -88,7 +88,7 @@ function Home() {
       console.log("Summary Set:", data.output.summary); // Debugging before navigating
       navigate("/summary", {state: {summary: data.output.summary, pboObj}});
     } catch (error) {
-      console.error("Error:", error); // Handle errors
+      console.error("Error:", error); 
     }
   };
 
