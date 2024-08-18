@@ -53,9 +53,18 @@ app.post("/api/hello", async (req, res) => {
     summarizerProcess.on("close", (code) => {
       summarizerOutput = summarizerOutput.trim();
       console.log("Summarizer output:", summarizerOutput);
+      
 
       // Send the summary to the front end
-      res.json({ message: "URL received", url: url, output: summarizerOutput });
+      //added text: text
+      res.json({
+        message: "URL received",
+        url: url,
+        output: {
+          text: text,
+          summary: summarizerOutput,
+        },
+      });
     });
   } catch (error) {
     console.error("Error:", error);
