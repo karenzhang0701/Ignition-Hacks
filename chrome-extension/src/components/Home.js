@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import Logo from "../assets/news.png";
 
 function Home() {
+  let summaryString;
+
   // Function to handle the button click and make a request to the Express server
   const handleRequest = async () => {
     try {
@@ -20,7 +22,14 @@ function Home() {
       const data = await response.json();
       console.log(data); // Handle the response data
 
-      const summaryString = data.output; //Summary stored here
+      const summaryString = data.output.summary; //Summary stored here
+      console.log("Summary:", summaryString);
+
+      const parsedBiasOutput = JSON.parse(data.output.biasReport); //Bias report stored as a JSON object here
+      console.log("Bias Report:", parsedBiasOutput);
+
+      const textString = data.output.text; //Full text stored here
+      console.log("Text:", textString);
     } catch (error) {
       console.error("Error:", error); // Handle errors
     }
