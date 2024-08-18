@@ -1,5 +1,5 @@
 streamlit
-newspaper
+newspaper3k
 nltk
 sumy.parsers.plaintext
 sumy.nlp.tokenizers
