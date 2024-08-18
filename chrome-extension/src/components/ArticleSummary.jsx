@@ -6,7 +6,7 @@ import Slider from './Slider.jsx'
 
 const ArticleSummary = () => {
     const location = useLocation();
-    const pbo = location.state?.pbo || {};
+    const pboObj = location.state?.pboObj || {};
     const summary = location.state?.summary //access passed state
     console.log("Received Summary:", summary);
 
@@ -24,12 +24,12 @@ const ArticleSummary = () => {
                 value={9}
                 explanation={"Hello"} /> */}
 
-            {Object.values(pbo).map((item, index) => (
+            {Object.values(pboObj).map((item, index) => (
                 <Slider
                     key={index}
+                    description={item.explanation}
                     title={item.name}
                     value={item.score}
-                    description={item.explanation}
                 />
             ))}
         </div>

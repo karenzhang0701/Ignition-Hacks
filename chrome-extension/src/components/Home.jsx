@@ -4,7 +4,7 @@ import Logo from "../assets/news.png";
 
 
 function Home() {
-  const pbo = {
+  /*const pbo = {
     "Climate Change": {
       "name": "Climate Change",
       "score": 90,
@@ -25,7 +25,7 @@ function Home() {
       "score": 75,
       "explanation": "While the author presents both sides of the argument, their strong support for vegan diets and criticism of meat consumption makes them less impartial."
     }
-  };
+  };*/
 
 
   const [summaryString, setSummaryString] = useState("");
@@ -49,36 +49,44 @@ function Home() {
       const data = await response.json();
       console.log(data); // Handle the response data
 
-      const summaryString = data.output.summary; //Summary stored here
-      console.log("Summary:", summaryString);
-
-      const textString = data.output.text; //Full text stored here
-      console.log("Text:", textString);
-
-      setTextString(textString);
-      setSummaryString(summaryString); //Summary stored here
-      navigate("/summary", {state: {summary: summaryString}});
-
       const pbo = JSON.parse(data.output.biasReport).slice(7,-3); //Bias report stored as a JSON object here
       console.log("Bias Report:", pbo);
-      const pboArr = JSON.parse(pbo)
-
+      const pboArr = JSON.parse(pbo);
       const topic1 = pboArr[0];
-      console.log(topic1.name)
       const topic2 = pboArr[1];
       const topic3 = pboArr[2];
       const topic4 = pboArr[3];
 
-      // Navigate to the ArticleSummary page and pass the data
-      /*navigate("/summary", {
-        state: {
-          summary: summaryString,
-          topic1: topic1,
-          topic2: topic2,
-          topic3: topic3,
-          topic4: topic4
+      const pboObj = {
+        [topic1.name]: {
+          "name": topic1.name,
+          "score": topic1.score,
+          "explanation": topic1.explanation
+        },
+        [topic2.name]: {
+          "name": topic2.name,
+          "score": topic2.score,
+          "explanation": topic2.explanation
+        },
+        [topic3.name]: {
+          "name": topic3.name,
+          "score": topic3.score,
+          "explanation": topic3.explanation
+        },
+        [topic4.name]: {
+          "name": topic4.name,
+          "score": topic4.score,
+          "explanation": topic4.explanation
         }
-      });*/
+      }
+
+      console.log(pboObj)
+
+      console.log("Article Text: ", data.output.text); //testing
+      setTextString(data.output.text);
+      setSummaryString(data.output.summary); //Summary stored here
+      console.log("Summary Set:", data.output.summary); // Debugging before navigating
+      navigate("/summary", {state: {summary: data.output.summary, pboObj}});
     } catch (error) {
       console.error("Error:", error); // Handle errors
     }

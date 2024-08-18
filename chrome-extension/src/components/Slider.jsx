@@ -12,7 +12,7 @@ const getImpartialityColor = (score) => {
     return 'red';
 }
 
-const Slider = ({ title, value, description }) => {
+const Slider = ({ description, title, value }) => {
     const colorFunction = title === 'Impartiality Score' ? getImpartialityColor : getPosNegColor;
 
     const Labels = title === 'Impartiality Score' ? (

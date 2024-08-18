@@ -28,7 +28,7 @@ app.get("/", (req, res) => {
 // Used to run bias.py and summarizer.py
 function runPythonProcess(path, input) {
   return new Promise((resolve, reject) => {
-    const pythonProcess = exec(`python3 "${path}"`);
+    const pythonProcess = exec(`python "${path}"`);
     pythonProcess.stdin.write(input);
     pythonProcess.stdin.end();
 
@@ -60,7 +60,7 @@ app.post("/api/hello", async (req, res) => {
     const { stdout: scraperOutput } = await execPromise(
       `python "${scraperPath}" "${url}"`
     );
-    const text = scraperOutput.trim().replace(/�/g, ""); //stores article text
+    const text = scraperOutput.trim().replace(/�/g, "'"); //stores article text
     console.log("Scraper output:", text);
 
     // Get the bias report
